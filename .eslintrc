@@ -1,7 +1,11 @@
 {
   "extends": "airbnb",
+  "env": {
+    "mocha": true
+  },
   "rules": {
     "comma-dangle": ["error", {"functions": "never"}],
-    "no-console": [0]
+    "no-console": [0],
+    "no-use-before-define": [0]
   }
 }
