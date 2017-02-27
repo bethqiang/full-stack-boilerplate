@@ -41,7 +41,7 @@ function sync(force = process.env.NODE_ENV === 'testing', retries = 0, maxRetrie
       }
       // Otherwise, do this autocreate nonsense
       console.log(chalk.blue(`${retries ? `[retry ${retries}]` : ''} Creating database ${name}...`));
-      // eslint-disable-next-line consistent-return, no-unused-vars
+      // eslint-disable-next-line consistent-return
       return new Promise((resolve, reject) =>
         childProcess.exec(`createdb "${name}"`, resolve))
         .then(() => sync(true, retries + 1));

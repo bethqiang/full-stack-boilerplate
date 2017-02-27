@@ -45,7 +45,7 @@ app.listen(port, () => {
   console.log(chalk.blue(`--- Listening on port ${port} ---`));
 });
 
-app.use('/', (err, req, res, next) => { // eslint-disable-line no-unused-vars
+app.use('/', (err, req, res, next) => {
   console.log(chalk.red('Houston, we have a problem'));
   console.log(chalk.red(`ERROR: ${err.message}`));
   res.sendStatus(err.status || 500);

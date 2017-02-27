@@ -6,6 +6,7 @@
   "rules": {
     "comma-dangle": ["error", "never"],
     "no-console": [0],
+    "no-unused-vars": [1, {"args": "none"}],
     "no-use-before-define": [0]
   }
 }
