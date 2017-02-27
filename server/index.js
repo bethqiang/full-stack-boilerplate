@@ -33,7 +33,7 @@ app.use(express.static(resolve(__dirname, '../browser/index.html')));
 app.use(express.static(resolve(__dirname, '../public')));
 
 // Routes
-// app.use('/api', require('./api'));
+app.use('/api', require('./api'));
 
 // Send index.html for anything else
 app.get('/*', (req, res) => {

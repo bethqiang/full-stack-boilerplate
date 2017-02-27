@@ -1,5 +1,6 @@
 import { Map } from 'immutable';
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 /* --------------- INITIAL STATE --------------- */
 
@@ -23,6 +24,7 @@ export const login = (username, password) =>
         const user = Map(response.data);
         dispatch(authenticated(user));
       })
+      .then(() => browserHistory.push('/'))
       .catch(err => console.log(err));
 
 /* --------------- REDUCER --------------- */
