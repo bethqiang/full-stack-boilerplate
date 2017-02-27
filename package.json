@@ -2,7 +2,7 @@
   "name": "full-stack-boilerplate",
   "version": "1.0.0",
   "description": "Because this is a pain to do every single time.",
-  "main": "babelify.js",
+  "main": "server/index.js",
   "scripts": {
     "build": "webpack",
     "build-watch": "webpack -w",
