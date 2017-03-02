@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 
 /* --------------- INITIAL STATE --------------- */
 
-const initialState = Map({});
+const initialState = null;
 
 /* --------------- ACTIONS --------------- */
 
@@ -23,6 +23,15 @@ export const login = (username, password) =>
       .then((response) => {
         const user = Map(response.data);
         dispatch(authenticated(user));
+      })
+      .then(() => browserHistory.push('/'))
+      .catch(err => console.log(err));
+
+export const logout = () =>
+  dispatch =>
+    axios.post('/api/auth/logout')
+      .then((response) => {
+        dispatch(authenticated(null));
       })
       .then(() => browserHistory.push('/'))
       .catch(err => console.log(err));

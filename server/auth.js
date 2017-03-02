@@ -44,9 +44,17 @@ auth.post('/local/login', (req, res, next) => {
   })(req, res, next);
 });
 
-// Send user id to frontend
+// Send user id to front-end after signup/login
 auth.get('/whoami', (req, res) => {
-  res.send(_.pick(req.user, ['id']));
+  const userId = _.pick(req.user, ['id']);
+  if (userId) res.send(userId);
+  else res.send(null);
+});
+
+// Logout
+auth.post('/logout', (req, res, next) => {
+  req.logout();
+  res.redirect('/api/auth/whoami');
 });
 
 module.exports = auth;

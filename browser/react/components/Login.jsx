@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { login } from '../../redux/reducers/auth-reducer';
+import { login, logout } from '../../redux/reducers/auth-reducer';
 
 /* ----------------- COMPONENT ------------------ */
 
@@ -26,6 +26,7 @@ const Login = props => (
       </div>
       <button type="submit">Log In</button>
     </form>
+    <button onClick={props.logout}>Log Out</button>
   </div>
 );
 
@@ -37,6 +38,9 @@ const mapDispatchToProps = dispatch => ({
     const email = evt.target.email.value;
     const password = evt.target.password.value;
     dispatch(login(email, password));
+  },
+  logout() {
+    dispatch(logout());
   }
 });
 
