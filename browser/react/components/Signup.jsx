@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { signup } from '../../redux/reducers/auth-reducer';
@@ -29,6 +29,12 @@ const Signup = props => (
     </form>
   </div>
 );
+
+/* ----------------- PROP TYPES ------------------ */
+
+Signup.propTypes = {
+  signup: PropTypes.func.isRequired
+};
 
 /* ----------------- CONTAINER ------------------ */
 
