@@ -20,7 +20,7 @@ const authenticated = user => ({
 export const login = (username, password) =>
   dispatch =>
     axios.post('/api/auth/local/login', { username, password })
-      .then((response) => {
+      .then(response => {
         const user = Map(response.data);
         dispatch(authenticated(user));
       })
@@ -36,9 +36,7 @@ export const signup = (email, password) =>
 export const logout = () =>
   dispatch =>
     axios.post('/api/auth/logout')
-      .then((response) => {
-        dispatch(authenticated(null));
-      })
+      .then(response => dispatch(authenticated(null)))
       .then(() => browserHistory.push('/'))
       .catch(err => console.log(err));
 

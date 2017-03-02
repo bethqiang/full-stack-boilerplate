@@ -20,8 +20,8 @@ passport.deserializeUser(
 // Local signup
 auth.post('/local/signup', (req, res, next) => {
   User.create(req.body)
-    .then((user) => {
-      req.login(user, (err) => {
+    .then(user => {
+      req.login(user, (err) => { // eslint-disable-line arrow-parens
         if (err) next(err);
         else res.sendStatus(201);
       });
@@ -33,12 +33,12 @@ auth.post('/local/signup', (req, res, next) => {
 passport.use(new LocalStrategy(
   (email, password, done) => {
     User.findOne({ where: { email } })
-      .then((user) => {
+      .then(user => {
         if (!user) {
           return done(null, false, { message: 'Login incorrect' });
         }
         return user.authenticate(password)
-          .then((ok) => {
+          .then(ok => {
             if (!ok) {
               return done(null, false, { message: 'Login incorrect' });
             }

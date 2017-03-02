@@ -1,9 +1,11 @@
 {
   "extends": "airbnb",
   "env": {
+    "es6": true,
     "mocha": true
   },
   "rules": {
+    "arrow-parens": ["error", "as-needed", {"requireForBlockBody": false}],
     "comma-dangle": ["error", "never"],
     "no-console": [0],
     "no-unused-vars": [1, {"args": "none"}],
