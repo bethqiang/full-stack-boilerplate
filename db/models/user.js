@@ -3,6 +3,12 @@ const Sequelize = require('sequelize');
 const db = require('../index');
 
 const User = db.define('users', {
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
+    allowNull: false
+  },
   email: {
     type: Sequelize.STRING,
     validate: {

@@ -1,5 +1,6 @@
 const auth = require('express').Router();
 const passport = require('passport');
+const _ = require('lodash');
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../db').model('users');
@@ -43,7 +44,9 @@ auth.post('/local/login', (req, res, next) => {
   })(req, res, next);
 });
 
-// Send user info to frontend
-auth.get('/whoami', (req, res) => res.send(req.user));
+// Send user id to frontend
+auth.get('/whoami', (req, res) => {
+  res.send(_.pick(req.user, ['id']));
+});
 
 module.exports = auth;
