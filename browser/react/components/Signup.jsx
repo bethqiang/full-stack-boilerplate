@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { login, logout } from '../../redux/reducers/auth-reducer';
+import { signup } from '../../redux/reducers/auth-reducer';
 
 /* ----------------- COMPONENT ------------------ */
 
-const Login = props => (
+const Signup = props => (
   <div>
-    <h3>Log In</h3>
-    <form onSubmit={props.login}>
+    <h3>Sign Up</h3>
+    <form onSubmit={props.signup}>
       <div>
         <input
           name="email"
@@ -25,27 +25,23 @@ const Login = props => (
           required
         />
       </div>
-      <button type="submit">Log In</button>
+      <button type="submit">Sign Up</button>
     </form>
-    <button onClick={props.logout}>Log Out</button>
   </div>
 );
 
 /* ----------------- CONTAINER ------------------ */
 
 const mapDispatchToProps = dispatch => ({
-  login(evt) {
+  signup(evt) {
     evt.preventDefault();
     const email = evt.target.email.value;
     const password = evt.target.password.value;
-    dispatch(login(email, password));
-  },
-  logout() {
-    dispatch(logout());
+    dispatch(signup(email, password));
   }
 });
 
 export default connect(
   null,
   mapDispatchToProps
-)(Login);
+)(Signup);

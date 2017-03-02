@@ -27,6 +27,12 @@ export const login = (username, password) =>
       .then(() => browserHistory.push('/'))
       .catch(err => console.log(err));
 
+export const signup = (email, password) =>
+  dispatch =>
+    axios.post('/api/auth/local/signup', { email, password })
+      .then(response => dispatch(login(email, password)))
+      .catch(err => console.log(err));
+
 export const logout = () =>
   dispatch =>
     axios.post('/api/auth/logout')
