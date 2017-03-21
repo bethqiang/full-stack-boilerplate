@@ -34,6 +34,12 @@ const User = db.define('users', {
             err ? reject(err) : resolve(result))
           )
         );
+    },
+    // Don't send passwords anywhere ever.
+    toJSON() {
+      const values = Object.assign({}, this.get());
+      delete values.password_digest;
+      return values;
     }
   }
 });

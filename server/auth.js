@@ -1,6 +1,5 @@
 const auth = require('express').Router();
 const passport = require('passport');
-const _ = require('lodash');
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../db').model('users');
@@ -58,8 +57,7 @@ auth.post('/local/login', (req, res, next) => {
 
 // Send user id to front-end after signup/login
 auth.get('/whoami', (req, res) => {
-  const userId = _.pick(req.user, ['id']);
-  if (userId) res.send(userId);
+  if (req.user.id) res.send(req.user);
   else res.send(null);
 });
 
