@@ -8,12 +8,19 @@ describe('User', () => {
   describe('authenticate(plaintext: String) ~> Boolean', () => {
     it('resolves true if the password matches', () =>
       User.create({ email: 'test@test.com', password: 'ok' })
-        .then(user => user.authenticate('ok'))
-        .then(result => expect(result).to.be.true));
+      .then(user => user.authenticate('ok'))
+      .then(result => expect(result).to.be.true));
 
     it("resolves false if the password doesn't match", () =>
       User.findOne({ where: { email: 'test@test.com' } })
       .then(user => user.authenticate('not ok'))
       .then(result => expect(result).to.be.false));
+  });
+
+  describe('toJSON instance method', () => {
+    it('excludes the password_digest field', () =>
+      User.create({ email: 'test2@test.com', password: 'ok' })
+      .then(user => user.toJSON())
+      .then(result => expect(result.password_digest).to.be.undefined));
   });
 });
